@@ -38,7 +38,7 @@ const SingleVideo = () => {
   return (
     
     <div>
-      <h1>Single Video</h1>
+      <h1>Video</h1>
       {video && (
         <>
             <h2>{video.title}</h2>

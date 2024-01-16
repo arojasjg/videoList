@@ -88,9 +88,13 @@ function VideoList() {
       <h2>Uploaded Videos</h2>
       {videos?.map((video) => (
         <div key={video._id}>
-          <h3>{video.title}</h3>
-          <video src={`http://localhost:5000/${video.videoPath}`} controls></video>
-          <br /><Link to={`/video/?videoId=${video.id}`}>View Video</Link>
+            <Link to={`/video/?videoId=${video.id}`}>
+          <h3>Video: {video.title} </h3>
+          <video preload="metadata" style={{heigth:150,width:150}} 
+          src={`http://localhost:5000/${video.videoPath}#t=0.1`} >
+
+          </video>
+          <br />View Video</Link>
           <hr />
         </div>
       ))}

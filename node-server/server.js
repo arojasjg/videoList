@@ -5,7 +5,6 @@ const multer = require("multer");
 const cors = require("cors");
 const app = express();
 const port = 5000;
-
 app.use(cors());
 app.use(express.static('public'));
 
@@ -66,14 +65,15 @@ app.get("/video/:videoId", async (req, res) => {
   console.log(req.params);
   try {
     const videos = JSON.parse(localStorage.getItem("videos")) || [];
-    console.log(videos);
     const { videoId } = req.params;
 
     const video = videos.find((video) => video.id == videoId);
 
     if (!video) {
+     
       res.status(404).json({ message: "Video not found" });
     } else {
+      video.videoPath = video.videoPath.replace('public\\','');
       res.json(video);
     }
   } catch (error) {
